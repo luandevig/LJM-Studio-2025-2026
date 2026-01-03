@@ -42,7 +42,7 @@ module.exports = {
         const n_a_bot = new EmbedBuilder()
             .setDescription(`<:ljm_x:1454957350250217474> Nenhum BOT com esse ID foi encontrado.`)
             .setColor("DarkRed")
-            .setFooter(`Se isso for um erro entre em contato com um desenvolvedor.`)
+            .setFooter({text:`Se isso for um erro entre em contato com um desenvolvedor.`})
             return interaction.reply({
                 embeds: [n_a_bot],
                 flags: 64

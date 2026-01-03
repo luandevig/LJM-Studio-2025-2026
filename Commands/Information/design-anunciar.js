@@ -45,7 +45,7 @@ module.exports = {
             const embed_reply_d = new EmbedBuilder()
                 .setDescription(`<:ljm_x:1454957350250217474> Canal de anúncios para designers não foi encontrado.`)
                 .setColor('ff0000')
-                .setFooter(`Entre em contato com o desenvolvedor.`)
+                .setFooter({text:`Entre em contato com o desenvolvedor.`})
             return interaction.reply({
                 embeds: [embed_reply_d],
                 flags: 64
@@ -68,7 +68,7 @@ module.exports = {
             if (!ids.length) {
                 const embed_id_b = new EmbedBuilder()
                     .setDescription(`<:ljm_x:1454957350250217474> IDs inválidos, por favor verifique se os IDs existem.`)
-                    .setFooter(`Se achar que isso é um erro, entre em contato com um desenvolvedor.`)
+                    .setFooter({text:`Se achar que isso é um erro, entre em contato com um desenvolvedor.`})
                     .setColor("FF0000")
                 return interaction.reply({
                     embeds: [embed_id_b],
@@ -84,7 +84,7 @@ module.exports = {
         if (!produtos.length) {
             const embed_design = new EmbedBuilder()
                 .setDescription(`<:ljm_x:1454957350250217474> Nenhum design foi encontrado no banco de dados.`)
-                .setFooter(`Tente novamente mais tarde ou entre em contato com um desenvolvedor.`)
+                .setFooter({text:`Tente novamente mais tarde ou entre em contato com um desenvolvedor.`})
                 .setColor("FF0000")
             return interaction.reply({
                 embeds: [embed_design],
