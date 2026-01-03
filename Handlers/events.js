@@ -5,6 +5,7 @@ module.exports = (client) => {
 	fs.readdirSync('./Events/').filter((file) => file.endsWith('.js')).forEach((event) => {
 		require(`../Events/${event}`);
 	})
-	console.log(chalk.greenBright('events • Ok'))
+	console.log(chalk.blueBright('[Events] • Tudo Certo.'))
 };
+
 

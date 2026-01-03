@@ -16,6 +16,17 @@ module.exports = {
     ],
 
     run: async (client, interaction) => {
+    const cargosPermitidos = ["1203263257540821033", "1189904400584556599", "1455821825291325451"];
+    const temPermissao = interaction.member.roles.cache.some(role =>
+    cargosPermitidos.includes(role.id));
+            if (!temPermissao) {
+                const sem_perm_b = new EmbedBuilder()
+                   .setDescription(`<:ljm_x:1454957350250217474> Apenas cargos autorizados podem usar este comando!`)
+                   .setColor(`#FF0000`)
+            return interaction.reply({
+                embeds: [sem_perm_b],
+                flags: 64});
+}
 
         const id = interaction.options.getInteger("id");
 
@@ -25,7 +36,7 @@ module.exports = {
             const produto_nao_encontrado = new EmbedBuilder()
                     .setDescription(`<:ljm_x:1454957350250217474> Produto não encontrado.`)
                     .setColor("FF0000")
-                return interaction.reply({ embeds: [produto_nao_encontrado], ephemeral: true });
+                return interaction.reply({ embeds: [produto_nao_encontrado], flags: 64 });
             }
 
             const embed = new EmbedBuilder()
@@ -48,7 +59,7 @@ module.exports = {
             const nenhum_produto = new EmbedBuilder()
                 .setDescription(`<:ljm_x:1454957350250217474> Nenhum produto cadastrado.`)
                 .setColor("FF0000")
-            return interaction.reply({ embeds: [nenhum_produto], ephemeral: true });
+            return interaction.reply({ embeds: [nenhum_produto], flags: 64 });
         }
 
         const lista = produtos.map(p =>

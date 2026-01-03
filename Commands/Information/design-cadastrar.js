@@ -3,7 +3,8 @@ const {
     ModalBuilder,
     TextInputBuilder,
     TextInputStyle,
-    ActionRowBuilder
+    ActionRowBuilder,
+    EmbedBuilder
 } = require("discord.js");
 
 const Produto = require("../../models/CadastroDESIGN");
@@ -14,6 +15,17 @@ module.exports = {
     type: ApplicationCommandType.ChatInput,
 
     run: async (client, interaction) => {
+    const cargosPermitidos = ["1203263257540821033", "1189904400584556599", "1455821825291325451"];
+    const temPermissao = interaction.member.roles.cache.some(role =>
+    cargosPermitidos.includes(role.id));
+            if (!temPermissao) {
+                const sem_perm_b = new EmbedBuilder()
+                   .setDescription(`<:ljm_x:1454957350250217474> Apenas cargos autorizados podem usar este comando!`)
+                   .setColor(`#FF0000`)
+            return interaction.reply({
+                embeds: [sem_perm_b],
+                flags: 64});
+}
 
         const modal_d = new ModalBuilder()
             .setCustomId("modal_cadastrar_design")

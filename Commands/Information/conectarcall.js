@@ -17,11 +17,17 @@ module.exports = {
     ],
 
     run: async (client, interaction) => {
-        arr = ["1189904400584556599", "1034153099973111882", "1044714371814785124"];
-        if(!interaction.member.roles.cache.has(arr[0]) === !interaction.member.roles.cache.has(arr[1]) === !interaction.member.roles.cache.has(arr[2]))
-        { return interaction.reply(interaction.reply({embeds: [ new Discord.EmbedBuilder()
-            .setDescription(`:x: Você não possui permissão para utilizar este comando.`)
-            .setColor(`ff00ff`)]}))}
+    const cargosPermitidos = ["1203263257540821033", "1189904400584556599", "1455821825291325451"];
+    const temPermissao = interaction.member.roles.cache.some(role =>
+    cargosPermitidos.includes(role.id));
+            if (!temPermissao) {
+                const sem_perm_b = new Discord.EmbedBuilder()
+                   .setDescription(`<:ljm_x:1454957350250217474> Apenas cargos autorizados podem usar este comando!`)
+                   .setColor(`#FF0000`)
+            return interaction.reply({
+                embeds: [sem_perm_b],
+                flags: 64});
+}
 
         let canal = interaction.options.getChannel('canal');
         joinVoiceChannel({
@@ -32,7 +38,7 @@ module.exports = {
 
         const embeda = new Discord.EmbedBuilder()
         .setColor('FF00FF')
-        .setDescription(`<:verify:1454936247532257294> **Agora estou conectado no canal ${canal}.**`)
+        .setDescription(`<:checkmark_IDS:1456900169508585494> **Agora estou conectado no canal ${canal}.**`)
         .addFields({name: `Fui conectado por:`, value: `${interaction.user}`})
         interaction.reply({ embeds: [embeda] })
     }

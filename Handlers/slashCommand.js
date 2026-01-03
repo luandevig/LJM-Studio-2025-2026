@@ -42,7 +42,7 @@ module.exports = (client) => {
 					Routes.applicationCommands(CLIENT_ID),
 				{ body: slashCommands }
 			);
-			console.log(chalk.yellow('SlashCommands • Ok'))
+			console.log(chalk.yellowBright('[SlashCommands] • Nas perfeições.'))
 		} catch (error) {
 			console.log(error);
 		}
